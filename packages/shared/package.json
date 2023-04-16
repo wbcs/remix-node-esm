@@ -1,0 +1,28 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "description": "a pure esm pacakge",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "compile": "npm run reset && run-p 'compile:*'",
+    "compile:esbuild": "tsx esbuild.config.ts",
+    "compile:types": "tsc",
+    "clean": "rimraf node_modules",
+    "prepublishOnly": "npm run compile",
+    "prepare": "npm run compile",
+    "reset": "rimraf dist/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
